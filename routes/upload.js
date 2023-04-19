@@ -40,12 +40,14 @@ routes.post("/", upload.single("file"), async (req, res) => {
 
     console.log("File uploaded successfully!", blobUrl);
 
-    // fs.unlink(fileName, (err) => {
-    //   console.log("fileeename", fileName);
-    //   if (err) reject(err);
-    //   console.log(`${fileName} deleted correctly!`);
-    //   resolve();
-    // });
+    console.log("uploadResponse", uploadResponse.isServerEncrypted);
+
+    uploadResponse.isServerEncrypted &&
+      fs.unlink(filePath, async (err) => {
+        console.log("fileeename", fileName);
+        if (err) throw err;
+        console.log(`${fileName} deleted correctly!`);
+      });
 
     res.status(200).json(blobUrl);
   } catch (error) {
