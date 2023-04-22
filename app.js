@@ -16,6 +16,7 @@ app.use(
       "http://localhost:3000",
       "http://localhost:8000",
       "http://localhost:9000",
+      "https://trade-on-premise-dashboard.web.app"
     ],
   })
 );
